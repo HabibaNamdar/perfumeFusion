@@ -20,6 +20,8 @@
 
 .createaccount {
     cursor: pointer;
+    text-decoration: none;
+    color: #000;
 }
 
 .login-btn {

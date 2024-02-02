@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./login.css";
 function Login() {
   return (
@@ -37,7 +38,8 @@ function Login() {
                         </button>
                       </div>
                       <div className="row">
-                        <span className="createaccount">Create account</span>
+                        {/* <span className="createaccount">Create account</span> */}
+                        <Link to="/register" className="createaccount">Create account</Link>
                       </div>
                     </div>
                   </div>
