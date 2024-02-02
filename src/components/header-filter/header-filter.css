@@ -1,0 +1,9 @@
+.filter-container{
+    background-color: #000;
+    padding: 12px 0px;
+}
+
+.filter-container a{
+    cursor: pointer;
+    color: #fff !important;
+}

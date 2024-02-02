@@ -1,0 +1,28 @@
+.login {
+    text-align: center;
+}
+
+.login-title {
+    text-align: left;
+    font-weight: bold;
+}
+
+.form-label {
+    float: left;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.forgotpassword {
+    float: right;
+    cursor: pointer;
+}
+
+.createaccount {
+    cursor: pointer;
+}
+
+.login-btn {
+    font-weight: bold !important;
+    border-radius: 25px !important
+}
