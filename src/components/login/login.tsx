@@ -23,7 +23,7 @@ function Login() {
               <div className="row">
                 <div className="col-12">
                   <div className="mb-3">
-                    <label className="form-label">Password</label>
+                    <label className="password">Password</label>
                     <label className="forgotpassword">Forgot password?</label>
                     <input type="password" className="form-control" />
                   </div>

@@ -1,0 +1,19 @@
+.create-account{
+    font-weight: bold;
+}
+.firstname{
+    font-weight: bold;
+    cursor: pointer;
+}
+.lastname{
+    font-weight: bold;
+    cursor: pointer;
+}
+.email{
+    font-weight: bold;
+    cursor: pointer;
+}
+.Password{
+    font-weight: bold;
+    cursor: pointer;
+}

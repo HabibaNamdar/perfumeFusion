@@ -16,6 +16,11 @@
 .forgotpassword {
     float: right;
     cursor: pointer;
+    
+}
+.password{
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .createaccount {
