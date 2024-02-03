@@ -1,6 +1,20 @@
 import { Link } from "react-router-dom";
 import "./login.css";
+import { FormEvent, useRef } from "react";
 function Login() {
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  const handlerSumbit = (event: FormEvent) => {
+    event.preventDefault();
+    if (emailRef.current) {
+      console.log(emailRef.current.value);
+    }
+    if (passwordRef.current) {
+      console.log(passwordRef.current.value);
+    }
+  };
+
   return (
     <div className="container  mt-3">
       <div className="row justify-content-center">
@@ -10,43 +24,51 @@ function Login() {
               <h1 className="login-title">LOGIN</h1>
             </div>
           </div>
-          <div className="row mt-3">
-            <div className="col-12">
-              <div className="mb-3">
-                <label className="form-label">Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="name@example.com"
-                />
-              </div>
-              <div className="row">
-                <div className="col-12">
-                  <div className="mb-3">
-                    <label className="password">Password</label>
-                    <label className="forgotpassword">Forgot password?</label>
-                    <input type="password" className="form-control" />
-                  </div>
-                  <div className="row">
-                    <div className="col-12">
-                      <div className="mb-2">
-                        <button
-                          type="button"
-                          className="btn btn-primary btn-lg btn-block col-12 login-btn"
-                        >
-                          Sign In
-                        </button>
-                      </div>
-                      <div className="row">
-                        {/* <span className="createaccount">Create account</span> */}
-                        <Link to="/register" className="createaccount">Create account</Link>
+          <form onSubmit={handlerSumbit}>
+            <div className="row mt-3">
+              <div className="col-12">
+                <div className="mb-3">
+                  <label className="form-label">Email address</label>
+                  <input
+                    type="email"
+                    ref={emailRef}
+                    className="form-control"
+                    placeholder="name@example.com"
+                  />
+                </div>
+                <div className="row">
+                  <div className="col-12">
+                    <div className="mb-3">
+                      <label className="password">Password</label>
+                      <label className="forgotpassword">Forgot password?</label>
+                      <input
+                        ref={passwordRef}
+                        type="password"
+                        className="form-control"
+                      />
+                    </div>
+                    <div className="row">
+                      <div className="col-12">
+                        <div className="mb-2">
+                          <button
+                            type="submit"
+                            className="btn btn-primary btn-lg btn-block col-12 login-btn"
+                          >
+                            Sign In
+                          </button>
+                        </div>
+                        <div className="row">
+                          <Link to="/register" className="createaccount">
+                            Create account
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

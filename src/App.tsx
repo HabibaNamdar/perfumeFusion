@@ -1,8 +1,8 @@
-import Header from './components/header/Header'
-import Headerfilter from './components/header-filter/Header-filter'
-import Login from './components/login/login'
-import Registor from './components/registor/Registor'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from "./components/header/Header";
+import Headerfilter from "./components/header-filter/Header-filter";
+import Login from "./components/login/login";
+import Registor from "./components/registor/Registor";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -19,4 +19,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
