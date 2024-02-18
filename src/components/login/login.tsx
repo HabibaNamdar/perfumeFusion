@@ -1,18 +1,21 @@
 import { Link } from "react-router-dom";
 import "./login.css";
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 function Login() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-
+  const person = { email: "", password: "" };
+  
   const handlerSumbit = (event: FormEvent) => {
     event.preventDefault();
+  
     if (emailRef.current) {
-      console.log(emailRef.current.value);
+      person.email = emailRef.current.value;
     }
     if (passwordRef.current) {
-      console.log(passwordRef.current.value);
+      person.password = passwordRef.current.value;
     }
+    console.log(person);
   };
 
   return (
@@ -35,6 +38,7 @@ function Login() {
                     className="form-control"
                     placeholder="name@example.com"
                   />
+  
                 </div>
                 <div className="row">
                   <div className="col-12">
