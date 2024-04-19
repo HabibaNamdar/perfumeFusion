@@ -2,10 +2,19 @@ import { Link } from "react-router-dom";
 import "./login.css";
 import { FormEvent, useState } from "react";
 import {  FieldValues, useForm } from "react-hook-form";
+import {z} from 'zod';
+import {zodResolver} from '@hookform/resolvers/zod';
+
+const schema = z.object({
+  email: z.string().email({ message: "Invalid email address" }),
+  password: z.string().min(6, { message: "Password must be at least 6 characters long" })
+});
+
+type FormData = z.infer<typeof schema>;
 
 function Login() {
 
-const {register, handleSubmit, formState: {errors}} = useForm();
+const {register, handleSubmit, formState: {errors}} = useForm<FormData>({resolver: zodResolver(schema)});
 
 const onSubmit = (data: FieldValues) =>console.log(data);
 
@@ -23,12 +32,12 @@ const onSubmit = (data: FieldValues) =>console.log(data);
               <div className="col-12">
                 <div className="mb-3">
                   <label className="form-label">Email address</label>
-                  <input {...register('email', {required:true})}
+                  <input {...register('email')}
                     type="email"
                     className="form-control"
                     placeholder="name@example.com"
                   />
-                  {errors.email?.type === 'required' &&<p className="text-danger"> email is required.</p>}
+                  {errors.email &&<p className="text-danger">{errors.email.message}</p>}
                   
                 </div>
                 <div className="row">
@@ -36,11 +45,11 @@ const onSubmit = (data: FieldValues) =>console.log(data);
                     <div className="mb-3">
                       <label className="password">Password</label>
                       <label className="forgotpassword">Forgot password?</label>
-                      <input {...register('password', {required:true})}
+                      <input {...register('password')}
                         type="password"
                         className="form-control"
                       />
-                      {errors.password?.type === 'required' &&<p className="text-danger">password is required</p>}
+                      {errors.password &&<p className="text-danger">{errors.password.message}</p>}
                     </div>
                     <div className="row">
                       <div className="col-12">

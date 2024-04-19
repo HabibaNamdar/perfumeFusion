@@ -5,6 +5,10 @@
 .logo-name {
     text-align: center;
 }
+.logo-name  h1{
+    text-decoration: none;
+    color: white;
+}
 .account-text{
     margin-left: 9px;
 }

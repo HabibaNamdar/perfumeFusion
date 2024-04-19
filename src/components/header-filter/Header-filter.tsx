@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./header-filter.css";
 function Headerfilter() {
   return (
@@ -5,22 +6,24 @@ function Headerfilter() {
       <div className="col-8">
         <div className="row">
           <div className="col-2">
-            <a>Shop</a>
+            <Link to="home">
+            <a>SHOP</a>
+            </Link>
           </div>
           <div className="col-2">
-            <a>winter</a>
+            <a>WEEKLY DEALS</a>
           </div>
           <div className="col-2">
-            <a>Summer</a>
+            <a>LESS THAN 1500</a>
           </div>
           <div className="col-2">
-            <a>Men</a>
+            <a>BUNDLES</a>
           </div>
           <div className="col-2">
-            <a>Kids</a>
+            <a>ATTARS</a>
           </div>
           <div className="col-2">
-            <a>Women</a>
+            <a>GUESS & WIN</a>
           </div>
         </div>
       </div>

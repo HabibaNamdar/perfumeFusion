@@ -1,0 +1,19 @@
+.container{
+    margin-top: 15px;
+}
+.list-item-container{
+    background-color: lightgray;
+    border-radius: 10px;
+}
+.item-divider {
+    border-bottom: 1px solid black; /* Adjust the color and thickness as needed */
+    margin-bottom: 15px; /* Add some spacing between items */
+}
+.total-amount{
+    text-align: right;
+    margin-right: 45px;
+}
+.total-item{
+    text-align: right;
+    margin-right: 60px;
+}
