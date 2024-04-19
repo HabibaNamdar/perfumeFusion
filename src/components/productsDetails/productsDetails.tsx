@@ -1,8 +1,17 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./productsDetails.css";
+import { Item } from "../../models/cart.mode";
+import { nanoid } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../features/cart/cartSlice";
+
 function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
+  const [isAdding, setIsAdding] = useState(false);
+
+  // dispatch function
+  const dispatch = useDispatch();
+
   const decrementQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
@@ -11,6 +20,25 @@ function ProductDetails() {
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
+
+  const addToCartHandler = () => {
+    setIsAdding(true);
+    const item: Item = {
+      name: "perfume2",
+      description: "perfume 2 description",
+      id: nanoid(),
+      price: 5,
+      quantity: quantity,
+    };
+
+    // adding item to the store.
+    dispatch(addToCart(item));
+
+    setTimeout(() => {
+      setIsAdding(false);
+    }, 2000);
+  };
+
   return (
     <div className="container">
       <div className="row mt-4">
@@ -55,9 +83,21 @@ function ProductDetails() {
                     </div>
                   </div>
                 </div>
-                <button className="btn btn-danger btn-block mt-3 col-12">
-                  Add to cart
-                </button>
+              </div>
+              <div className="row align-items-center">
+                <div className="col-md-6">
+                  <button
+                    className="btn btn-danger btn-block mt-3 col-12"
+                    onClick={addToCartHandler}
+                  >
+                    Add to cart
+                  </button>
+                </div>
+                <div className="col-md-6">
+                  {isAdding && (
+                    <p className="text-success mt-1 mb-0">Item added to cart</p>
+                  )}
+                </div>
               </div>
             </div>
           </div>

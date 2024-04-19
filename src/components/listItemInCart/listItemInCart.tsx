@@ -2,23 +2,22 @@ import ItemInCart from "../itemInCart/itemInCart";
 import { useState } from "react";
 import './listItemInCart.css'
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Item, CartState } from "../../models/cart.mode";
 
 function ListItemInCart() {
+  const items: Item[] = useSelector((state: CartState) => state.cart);
+
   const [totalItems, setTotalItems] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
-
-  // Callback function to update total items and total amount
-  const updateTotals = (quantity: number, totalPrice: number) => {
-    setTotalItems(prevTotalItems => prevTotalItems + quantity);
-    setTotalAmount(prevTotalAmount => prevTotalAmount + totalPrice);
-  };
 
   return (
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-md-9 list-item-container">
-          <ItemInCart updateTotals={updateTotals} />
-          <ItemInCart updateTotals={updateTotals} />
+        {items.map(item => (
+        <ItemInCart key={item.id} item={item} />
+      ))}
           <div className="item-divider"></div>
           <div>
           <p className="total-item">Total items: {totalItems}</p>
