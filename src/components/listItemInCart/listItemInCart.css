@@ -17,3 +17,6 @@
     text-align: right;
     margin-right: 60px;
 }
+.DeleteAll{
+    cursor: pointer;
+}

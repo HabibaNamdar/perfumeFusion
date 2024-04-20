@@ -1,19 +1,32 @@
 import { useState } from "react";
 import "./itemInCart.css";
 import { Item } from "../../models/cart.mode";
-function ItemInCart({ item }: { item: Item }) {
-  const [quantity, setQuantity] = useState(1);
-  const pricePerItem = 2140; // Price per item
-  const total = quantity * pricePerItem; // Calculate total price
+import { XCircle } from "react-bootstrap-icons";
+import { useDispatch } from "react-redux";
+import { removeFromCart, updateInCart } from "../../features/cart/cartSlice";
 
-  const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
+function ItemInCart({ item }: { item: Item }) {
+  const dispatch = useDispatch();
+  const removeHandler = (item: Item) => {
+    dispatch(removeFromCart(item.id));
+  };
+
+  const decrementQuantity = (item: Item) => {
+    if (item.quantity > 0) {
+      const newQuantity = item.quantity - 1;
+      if (newQuantity == 0) {
+        dispatch(removeFromCart(item.id));
+      } else {
+        const newItem = { ...item, quantity: newQuantity };
+        dispatch(updateInCart(newItem));
+      }
     }
   };
 
-  const incrementQuantity = () => {
-    setQuantity(quantity + 1);
+  const incrementQuantity = (item: Item) => {
+    const newQuantity = item.quantity + 1;
+    const newItem = { ...item, quantity: newQuantity };
+    dispatch(updateInCart(newItem));
   };
 
   return (
@@ -27,20 +40,39 @@ function ItemInCart({ item }: { item: Item }) {
         />
       </div>
       <div className="col-md-4">
-        <h2 className="mb-0">
-          {item.name}
-        </h2>
+        <h2 className="mb-0">{item.name}</h2>
         <p>{item.description}</p>
       </div>
       <div className="col-md-3">
         <div className="quantity-selector">
-          <button onClick={decrementQuantity}>-</button>
+          <button
+            onClick={() => {
+              decrementQuantity(item);
+            }}
+          >
+            -
+          </button>
           <div>{item.quantity}</div>
-          <button onClick={incrementQuantity}>+</button>
+          <button
+            onClick={() => {
+              incrementQuantity(item);
+            }}
+          >
+            +
+          </button>
         </div>
       </div>
       <div className="col-md-2">
         <h2>Rs.{item.price * item.quantity}</h2>
+      </div>
+      <div className="col">
+        <XCircle
+          size={32}
+          color="red"
+          onClick={() => {
+            removeHandler(item);
+          }}
+        />
       </div>
     </div>
   );

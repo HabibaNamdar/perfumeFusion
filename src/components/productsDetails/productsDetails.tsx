@@ -5,6 +5,7 @@ import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice";
 
+
 function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
@@ -38,6 +39,7 @@ function ProductDetails() {
       setIsAdding(false);
     }, 2000);
   };
+  
 
   return (
     <div className="container">
