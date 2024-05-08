@@ -28,7 +28,7 @@ function ProductDetails() {
       name: "perfume2",
       description: "perfume 2 description",
       id: nanoid(),
-      price: 5,
+      price: 2140,
       quantity: quantity,
     };
 

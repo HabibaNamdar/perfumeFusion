@@ -29,6 +29,27 @@ function Home() {
    description:'Most Popular Aquatic Scent!',
    price:1350,
    imageUrl:"src/assets/images/perfume4.jpg"
+   },
+   {name:'CATCH 22 - GOLD EDITION',
+   description:'The Premium Gold Fragrance',
+   price:3550,
+   imageUrl: "src/assets/images/perfume5.jpg" 
+   },
+   {name:'TIPPING POINT',
+   description:'Our #1 Office Wear! 👔',
+   price:2080,
+   imageUrl:"src/assets/images/perfume6.jpg"
+   },
+   {name:'ZARGIYA',
+   description:'The Elite Scent!',
+   price:2280,
+   imageUrl:"src/assets/images/perfume8.jpg"
+   },
+   {name:'ATLANTIS',
+   description:'Perfect Every-Day Scent',
+   price:1480,
+   imageUrl:"src/assets/images/perfume7.jpg"
+
    }
   ];
 
